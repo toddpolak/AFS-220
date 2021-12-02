@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const UserContext = React.createContext()
+export const Context = React.createContext()
 
 const userAxios = axios.create()
 
@@ -11,13 +11,19 @@ userAxios.interceptors.request.use(config => {
     return config
 })
 
-export default function UserProvider(props) {
+export default function Provider(props) {
     const initState = { 
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
         errMsg: ''
     }
+    
+    const initMenuState = {
+        food: []
+    }
+
     const [userState, setUserState] = useState(initState)
+    const [menuItems, setMenuItems] = useState(initMenuState)
 
     function signup(credentials) {
         axios.post('/auth/signup', credentials)
@@ -76,16 +82,32 @@ export default function UserProvider(props) {
         }))
     }
 
+    function getFood() {
+        userAxios.get('/food')
+        .then(res => {
+            setMenuItems(prevState => ({
+                ...prevState,
+                food: res.data
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    useEffect(() => {
+        getFood()
+    }, [])
+
     return (
-        <UserContext.Provider
+        <Context.Provider
             value={{
                 ...userState,
+                ...menuItems,
                 signup,
                 login,
                 logout,
                 resetAuthErr
             }}>
             { props.children }
-        </UserContext.Provider>
+        </Context.Provider>
     )
 }

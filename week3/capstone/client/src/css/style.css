@@ -1085,6 +1085,31 @@ body {
 	cursor: pointer;
 }
 
+.add_to_cart_wrapper {
+	background-color: rgb(91, 116, 116);
+	color: white;
+	width: 200px;
+	padding: 10px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.add_to_cart {
+
+}
+
+.add_to_cart_wrapper:hover {
+	background-color: rgb(133, 156, 156);
+}
+
+.detail_price {
+	background-color: rgb(59, 82, 82);
+	padding: 5px;
+	margin: 30px;
+
+
+}
+
 /*
 .welcome {
 	padding: 5px;

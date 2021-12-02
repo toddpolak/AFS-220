@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import NewAcct from './NewAcct'
 import Login from './Login'
-import { UserContext } from '../context/UserProvider'
+import { Context } from '../context/Provider'
 
 const initLoginInputs = { username: '', password: '' }
 const initNewAcctInputs = { firstname: '', lastname: '', username: '', password: ''}
@@ -11,7 +11,7 @@ export default function Auth() {
     const [loginInputs, setLoginInputs] = useState(initLoginInputs)
     const [newAcctInputs, setNewAcctInputs] = useState(initNewAcctInputs)
     const [toggle, setToggle] = useState(false)
-    const { signup, login, errMsg, resetAuthErr } = useContext(UserContext)
+    const { signup, login, errMsg, resetAuthErr } = useContext(Context)
 
     function handleChangeLogin(e){
         const {name, value} = e.target

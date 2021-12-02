@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
-import { UserContext } from '../context/UserProvider'
+import { Context } from '../context/Provider'
 
 export default function NewAcct(props) {
 
-  const { token } = useContext(UserContext)
+  const { token } = useContext(Context)
 
   const {
     handleChange, 

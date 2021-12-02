@@ -5,7 +5,7 @@ import beer from '../images/beer.jpg'
 import waiter from '../images/waiter.jpg'
 import food from '../images/food.jpg'
 
-function Home() {
+export default function Home() {
     return (
       <div id="body">
         <div className="slider">
@@ -61,5 +61,3 @@ function Home() {
       </div>
     )
 }
-
-export default Home

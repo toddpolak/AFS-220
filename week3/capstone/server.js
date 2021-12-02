@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import expressJwt from 'express-jwt'
 import dotenv from 'dotenv'
 import authRouter from './routes/authRouter.js'
+import foodRouter from './routes/foodRouter.js'
 
 const app = express()
 
@@ -21,6 +22,7 @@ main().catch(err=>console.log(err))
 
 // Routes
 app.use('/auth', authRouter)
+app.use('/food', foodRouter)
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) //req.user
 
 // Error handler

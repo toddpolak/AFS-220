@@ -1,41 +1,28 @@
-import React, { useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { UserContext } from '../context/UserProvider'
+import { useLocation, Link } from 'react-router-dom'
 import logo from '../images/logo.jpg'
 import logo2 from '../images/logo2.jpg'
+import UserNav from './UserNav'
 
 export default function Navbar() {
 
     const location = useLocation()
-    const { token, user, logout } = useContext(UserContext)
 
     return (
         <>
             <ul className="navigation">
                 <li>
-                    <a href="food.html">OUR FOOD</a>
+                    <Link to='/food'>OUR FOOD</Link>
                 </li>
                 <li>
                     <a href="beer.html">OUR BEER</a>
                 </li>
             </ul>
-            <a id="logo" href="index.html">
+            <Link to='/' id='logo'>
                 <img src={location.pathname === '/' ? logo : logo2} width="276" height="203" alt="" />
-            </a>
+            </Link>
             <ul id="navigation">
                 <li>
-                    {token ? 
-                        <>
-                            <div className='welcome'>
-                                Welcome {`${user.firstname}!`}
-                            </div>
-                            <div className='welcome'>
-                                <label className='link' onClick={logout}>Logout</label>
-                            </div>
-                        </>
-                        :
-                        <Link to='/login'>Login</Link>
-                    }
+                    <UserNav />
                 </li>
             </ul>
         </>
