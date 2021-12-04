@@ -1,8 +1,7 @@
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Item(props) {
-
-    console.log('index: ', props.index)
 
     return (
         <>

@@ -15,6 +15,7 @@ export default function Provider(props) {
     const initState = { 
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
+        cartItems: localStorage.getItem('cartItems') || [],
         errMsg: ''
     }
     

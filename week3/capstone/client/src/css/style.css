@@ -1085,7 +1085,12 @@ body {
 	cursor: pointer;
 }
 
-.add_to_cart_wrapper {
+.detail-image {
+	width: 528px;
+	height: 352px;
+}
+
+.add-to-cart-wrapper {
 	background-color: rgb(91, 116, 116);
 	color: white;
 	width: 200px;
@@ -1094,19 +1099,18 @@ body {
 	cursor: pointer;
 }
 
-.add_to_cart {
+.add-to-cart {
 
 }
 
-.add_to_cart_wrapper:hover {
+.add-to-cart-wrapper:hover {
 	background-color: rgb(133, 156, 156);
 }
 
-.detail_price {
+.detail-price {
 	background-color: rgb(59, 82, 82);
 	padding: 5px;
 	margin: 30px;
-
 
 }
 
