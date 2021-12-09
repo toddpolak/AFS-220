@@ -14,7 +14,7 @@ export default function Navbar() {
                     <Link to='/food'>OUR FOOD</Link>
                 </li>
                 <li>
-                    <a href="beer.html">OUR BEER</a>
+                    <a href="/beer">OUR BEER</a>
                 </li>
             </ul>
             <Link to='/' id='logo'>

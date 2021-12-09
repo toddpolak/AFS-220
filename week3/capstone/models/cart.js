@@ -3,14 +3,17 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const cartSchema = new Schema({
-    foodItem : {
-        type: Schema.Types.ObjectId,
-        ref: "Food",
-        required: true
-    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    active: {
+        type: Boolean,
         required: true
     }
 })

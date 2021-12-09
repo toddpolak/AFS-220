@@ -1,17 +1,27 @@
 import React, { useState, useContext } from 'react'
 import NewAcct from './NewAcct'
 import Login from './Login'
+import { useNavigate, useLocation, Navigate, useParams } from 'react-router-dom'
 import { Context } from '../context/Provider'
 
 const initLoginInputs = { username: '', password: '' }
 const initNewAcctInputs = { firstname: '', lastname: '', username: '', password: ''}
 
-export default function Auth() {
+export default function Auth(props) {
 
     const [loginInputs, setLoginInputs] = useState(initLoginInputs)
     const [newAcctInputs, setNewAcctInputs] = useState(initNewAcctInputs)
     const [toggle, setToggle] = useState(false)
     const { signup, login, errMsg, resetAuthErr } = useContext(Context)
+
+    const location = useLocation()
+    // const navigate = useNavigate()
+    // const params = useParams()
+
+    console.log('location: ', location)
+    //console.log('props: ', props)
+    // console.log('navigate: ', navigate)
+    // console.log('params: ', params)
 
     function handleChangeLogin(e){
         const {name, value} = e.target

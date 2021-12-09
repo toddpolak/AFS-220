@@ -1058,6 +1058,8 @@ body {
 	flex-direction: column;
 	padding: 20px;
 	border: 1px solid black;
+	background-color: rgba(137, 151, 158, 0.6);
+	border-radius: 5px;
 }
 
 .auth-container > form {
@@ -1066,6 +1068,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 300px;
+	background-color: rgb(184, 101, 101);
+	border-radius: 5px;
 }
 
 .auth-container > form > input {
@@ -1112,6 +1116,16 @@ body {
 	padding: 5px;
 	margin: 30px;
 
+}
+
+.auth-display {
+	border: 1px solid black;
+	padding: 5x;
+	width: 300px;
+}
+
+.cart-detail {
+	margin: 35px;
 }
 
 /*
