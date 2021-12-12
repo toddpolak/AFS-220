@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Context } from '../context/Provider'
 import Item from '../components/Item'
 
@@ -8,9 +8,6 @@ export default function FoodItems() {
 
     const foodLeft = food.slice(0,3)
     const foodRight = food.slice(3)
-
-    console.log('foodLeft: ', foodLeft)
-    console.log('foodRight: ', foodRight)
 
     return (
         <>

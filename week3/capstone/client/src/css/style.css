@@ -1057,18 +1057,18 @@ body {
 	align-items: center;
 	flex-direction: column;
 	padding: 20px;
-	border: 1px solid black;
-	background-color: rgba(137, 151, 158, 0.6);
+	border: 1px solid lightslategray;
+	background-color: rgba(206, 216, 221, 0.6);
 	border-radius: 5px;
 }
 
 .auth-container > form {
-	border: 1px solid #3339;
+	border: 1px solid lightslategray;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 300px;
-	background-color: rgb(184, 101, 101);
+	background-color: #bebebe;
 	border-radius: 5px;
 }
 

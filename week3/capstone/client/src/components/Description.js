@@ -1,24 +1,32 @@
-//import React, { useState } from 'react'
 import { useContext } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 import { Context } from '../context/Provider'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Description({item}) {
 
-   const { token, addToCart } = useContext(Context)
+   const { addToCart } = useContext(Context)
 
    const navigate = useNavigate()
    const location = useLocation()
 
+   console.log('location: ', location)
+
     function handleAdd() {
 
-        console.log('location: ', location)
-        console.log('token: ', token)
-
-        if(!token) {
-            navigate('/login', {state: item})
-        }
         addToCart(item)
+
+        navigate('/cart', {state: item, replace: false})
+
+        // !token 
+
+        //     ? navigate('/login', {state: 
+        //         {redirect: '/food', 
+        //         action: 'addToCart', 
+        //         data: item}, 
+        //         replace: false})
+
+        //     : addToCart(item)
+            
     }
 
     return (
@@ -26,26 +34,16 @@ export default function Description({item}) {
             <h2>{item.item}</h2>
             <div className='section'>
                 <h4>{item.description}</h4>
-
                 <div className='detail-image'>
                     <img src={`/images/${item.image}`} alt='' />
                 </div>
-                
             </div>
             <div className='aside'>
-                <div className='add-to-cart-wrapper'>
-
-                    <span 
-                        className='add-to-cart'
-                        onClick={()=> handleAdd()}>Add to Cart</span>
-
+                <div className='add-to-cart-wrapper'
+                    onClick={()=> handleAdd()}>
+                    <span className='add-to-cart'>Add to Cart</span>
                     <span className="detail-price">${item.price}</span>
                 </div>
-
-                <div>
-                    Add to cart msg
-                </div>
-
             </div> 
         </>
     )

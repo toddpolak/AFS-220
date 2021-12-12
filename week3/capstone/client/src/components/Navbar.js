@@ -2,6 +2,7 @@ import { useLocation, Link } from 'react-router-dom'
 import logo from '../images/logo.jpg'
 import logo2 from '../images/logo2.jpg'
 import UserNav from './UserNav'
+import CartNav from './CartNav'
 
 export default function Navbar() {
 
@@ -23,6 +24,9 @@ export default function Navbar() {
             <ul id="navigation">
                 <li>
                     <UserNav />
+                </li>
+                <li>
+                    <CartNav />
                 </li>
             </ul>
         </>

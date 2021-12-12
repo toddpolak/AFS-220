@@ -24,8 +24,9 @@ main().catch(err=>console.log(err))
 // Routes
 app.use('/auth', authRouter)
 app.use('/food', foodRouter)
+app.use('/cart', cartRouter)
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) //req.user
-app.use('/api/cart', cartRouter)
+//app.use('/api/cart', cartRouter)
 
 // Error handler
 app.use((err, req, res, next) => {

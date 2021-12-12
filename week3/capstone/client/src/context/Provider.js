@@ -15,9 +15,8 @@ export default function Provider(props) {
     const initState = { 
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
-        cartId: localStorage.getItem('cartId') || '',
-        cartItems: [],
-        //cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
+        //cartId: localStorage.getItem('cartId') || '',
+        //cartItems: JSON.parse(localStorage.getItem('cartItems')) || {},
         errMsg: ''
     }
     
@@ -25,8 +24,15 @@ export default function Provider(props) {
         food: []
     }
 
+    const initCartState = {
+        //items: JSON.parse(localStorage.getItem('cartItems')) || {}
+        items: JSON.parse(localStorage.getItem('items')) || []
+        //items: []
+    }
+
     const [userState, setUserState] = useState(initState)
     const [menuItems, setMenuItems] = useState(initMenuState)
+    const [cartItems, setCartItems] = useState(initCartState)
 
     function signup(credentials) {
         axios.post('/auth/signup', credentials)
@@ -41,12 +47,13 @@ export default function Provider(props) {
                     user,
                     token
                 }))
-                getUserCart()
+
+                //getUserCart()
             })
             .catch(err => handleAuthErr(err.response.data.errMsg))
     }
 
-    function login(credentials) {
+    function login(credentials, state) {
         axios.post('/auth/login', credentials)
             .then(res => {
                 const { user, token } = res.data
@@ -59,7 +66,8 @@ export default function Provider(props) {
                     user,
                     token
                 }))
-                getUserCart()
+
+                //getUserCart()
             })
             .catch(err => handleAuthErr(err.response.data.errMsg))
     }
@@ -67,13 +75,16 @@ export default function Provider(props) {
     function logout() {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
-        localStorage.removeItem('cartId')
+        //localStorage.removeItem('cartId')
         //localStorage.removeItem('cartItems')
+
+        localStorage.clear()
+
         setUserState({
             user: {},
-            token: '',
-            cartId: '',
-            cartItems: []
+            token: ''
+            //cartId: '',
+            //cartItems: []
         })
     }
 
@@ -102,48 +113,79 @@ export default function Provider(props) {
         .catch(err => console.log(err.response.data.errMsg))
     }
 
-    function getUserCart() {
-        userAxios.get('/api/cart')
-            .then(res => {
-                localStorage.setItem('cartId', res.data._id)
-
-                setUserState(prevState => ({
-                    ...prevState,
-                    cartId: res.data._id
-                }))
-                getCartItems(res.data._id)
-            })
-            .catch(err => console.log(err.response.data.errMsg))
-    }
-
-    function getCartItems(id) {
-        userAxios.get(`/api/cart/items/${id}`)
-            .then(res => {
-                //localStorage.setItem('cartItems', JSON.stringify(res.data))
-
-                setUserState(prevState => ({
-                    ...prevState,
-                    cartItems: res.data
-                }))
-            })
-            .catch(err => console.log(err.response.data.errMsg))
-    }
-
     function addToCart(item) {
-        const cartId = localStorage.getItem('cartId')
 
-        userAxios.post(`/api/cart/add/${cartId}`, item)
-            .then(res => {
+        let existingEntries = JSON.parse(localStorage.getItem('items'))
 
-                //localStorage.setItem('cartItems', JSON.stringify(res.data))
+        //console.log(' local storage get item - existingEntries: ', existingEntries)
 
-                setUserState(prevState => ({
-                    ...prevState,
-                    cartItems: [...prevState.cartItems, res.data]
-                }))
-            })
-            .catch(err => console.log(err.response.data.errMsg))
+        if(existingEntries == null) existingEntries = []
+
+        //console.log('existingEntries: ', existingEntries)
+
+        existingEntries.push(item)
+
+        //console.log('after push existingEntries: ', existingEntries)
+
+        localStorage.setItem('items', JSON.stringify(existingEntries))
+
+        //console.log('after set item: ', JSON.parse(localStorage.getItem('items')))
+
+        setCartItems(prevState => ({
+            ...prevState, 
+            items: [...prevState.items, item]
+
+        }))
     }
+
+    // function getUserCart() {
+    //     userAxios.get('/api/cart')
+    //         .then(res => {
+
+    //             localStorage.setItem('cartId', res.data._id)
+
+    //             setUserState(prevState => ({
+    //                 ...prevState,
+    //                 cartId: res.data._id
+    //             }))
+    //             getCartItems(res.data._id)
+
+    //         })
+    //         .catch(err => console.log(err.response.data.errMsg))
+    // }
+
+    // function getCartItems(id) {
+    //     userAxios.get(`/api/cart/items/${id}`)
+    //         .then(res => {
+    //             localStorage.setItem('cartItems', JSON.stringify(res.data))
+
+    //             setUserState(prevState => ({
+    //                 ...prevState,
+    //                 cartItems: res.data
+    //             }))
+    //         })
+    //         .catch(err => console.log(err.response.data.errMsg))
+    // }
+
+    // function addToCart(item, id) {
+    //     const cartId = localStorage.getItem('cartId')
+
+    //     userAxios.post(`/api/cart/add/${cartId}`, item)
+    //         .then(res => {
+
+    //             let curCartItems = JSON.parse(localStorage.getItem('cartItems'))
+
+    //             curCartItems.push(res.data)
+
+    //             localStorage.setItem('cartItems', JSON.stringify(curCartItems))
+
+    //             setUserState(prevState => ({
+    //                 ...prevState,
+    //                 cartItems: [...prevState.cartItems, res.data]
+    //             }))
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     useEffect(() => {
         getFood()
@@ -154,6 +196,7 @@ export default function Provider(props) {
             value={{
                 ...userState,
                 ...menuItems,
+                ...cartItems,
                 signup,
                 login,
                 logout,
