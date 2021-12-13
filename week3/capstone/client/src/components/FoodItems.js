@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Context } from '../context/Provider'
 import Item from '../components/Item'
 

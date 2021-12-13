@@ -346,7 +346,9 @@ body {
 	font-size:18px;
 }
 #background #page #body .article ul li h2 a:hover {
+	/*
 	color:#ffffff;
+	*/
 }
 #background #page #body .article ul li p {
 	font-family:Arial;
@@ -770,7 +772,9 @@ body {
 	text-align:center;
 }
 #background .page #body .content .body ul.section li h2 a:hover {
+	/*
 	color:#ffffff;
+	*/
 }
 #background .page #body .content .body ul.section li ul {
 	margin:0;
@@ -833,7 +837,7 @@ body {
 }
 #background .page #body .content .body ul.news li {
 	margin:0;
-	pading:0;
+	padding:0;
 }
 #background .page #body .content .body ul.news li a {
 	text-decoration:none;
@@ -1082,7 +1086,9 @@ body {
 	margin: 16px 8px;
 	padding: 8px;
 	border-radius: 4px;
+	margin: 15px auto;
 	width: 150px;
+	
 }
 
 .link {
@@ -1092,6 +1098,19 @@ body {
 .detail-image {
 	width: 528px;
 	height: 352px;
+}
+
+.detail-price {
+	background-color: rgb(59, 82, 82);
+	padding: 5px;
+	margin: 30px;
+
+}
+
+.auth-display {
+	border: 1px solid black;
+	padding: 5x;
+	width: 300px;
 }
 
 .add-to-cart-wrapper {
@@ -1111,21 +1130,22 @@ body {
 	background-color: rgb(133, 156, 156);
 }
 
-.detail-price {
-	background-color: rgb(59, 82, 82);
-	padding: 5px;
-	margin: 30px;
-
-}
-
-.auth-display {
-	border: 1px solid black;
-	padding: 5x;
-	width: 300px;
-}
-
 .cart-detail {
 	margin: 35px;
+}
+
+.cart-page {
+	min-height: 400px;
+}
+
+.cart-added-msg {
+	font-size: large;
+	color: red;
+}
+
+.cart-page-image {
+	width: 30%;
+	height: 30%;
 }
 
 /*

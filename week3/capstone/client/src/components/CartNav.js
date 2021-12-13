@@ -5,9 +5,6 @@ import { Context } from '../context/Provider'
 export default function CartNav() {
     const { items } = useContext(Context)
 
-    //console.log('context: ', useContext(Context))
-    //console.log('UserNav items: ', items.length)
-
     return (
         <>
             <div>

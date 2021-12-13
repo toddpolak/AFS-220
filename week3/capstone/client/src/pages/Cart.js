@@ -1,15 +1,12 @@
-import { useEffect, useState, useContext } from 'react'
-import { Context } from '../context/Provider'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import CartItems from '../components/CartItems'
 
 export default function Cart() {
 
     const [cartMsg, setCartMsg] = useState('')
 
-    const navigate = useNavigate()
     const location = useLocation()
-
-    //console.log('location: ', location)
 
     useEffect(() => {
         if(location.state) {
@@ -20,9 +17,10 @@ export default function Cart() {
     return (
         <div id="body">
             <div class="content">
-                <div class="body">
+                <div class="body cart-page">
                     <h3>CART</h3>
-                    {cartMsg}
+                    <span className='cart-added-msg'>{cartMsg}</span>
+                    <CartItems />
                 </div>
             </div>
         </div>
