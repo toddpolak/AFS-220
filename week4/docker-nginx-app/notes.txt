@@ -1,2 +1,2 @@
-docker image build --tag local:my-nginx-app .
-docker container run -d --name my-nginx-app -p 8081:80 local:my-nginx-app
+docker image build --tag my-nginx-app:my-nginx-app .
+docker container run -d --name my-nginx-app -p 8081:80 my-nginx-app:my-nginx-app
