@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import nineDollars from '../images/nine-dollars.gif'
 import bbq from '../images/barbeque.jpg'
 import menu from '../images/food-menu.jpg'
@@ -14,28 +15,28 @@ export default function Home() {
               <h2>FUSCE SIT AMET EGET UTRU</h2>
               <img src={nineDollars} alt="" width="213" height="64" />
               <p> Curabitur omare dolor arcu. Sed gravida eu risus dapibus eu posuere quam pulvinar </p>
-              <a href="reservation.html">BOOK A TABLE</a> </li>
-            <li> <a href="#"> <img src={bbq} width="640" height="331" alt="" /></a> </li>
+              <Link to='/'>BOOK A TABLE</Link></li>
+            <li> <Link to='/'><img src={bbq} width="640" height="331" alt="" /></Link> </li>
           </ul>
         </div>
         <ul id="featured">
-          <li className="first"><a href="food.html"><img src={menu} width="470" height="237" alt="" /></a> </li>
-          <li><a href="beer.html"><img src={beer} width="460" height="237" alt="" /></a> </li>
+          <li className="first"><Link to='/food'><img src={menu} width="470" height="237" alt="" /></Link></li>
+          <li><Link to='/'><img src={beer} width="460" height="237" alt="" /></Link> </li>
         </ul>
         <div className="section">
           <h3>$7 LUNCH &amp; DINNER BUFFET </h3>
-          <p> Nulla a tellus in erat ullamcorper trisque. Suspendisse at mauris. Sed ut eros. <a href="#" className="more">&nbsp;</a> </p>
+          <p> Nulla a tellus in erat ullamcorper trisque. Suspendisse at mauris. Sed ut eros. <Link to='/' className="more">&nbsp;</Link></p>
         </div>
         <div id="content">
           <div className="article">
             <ul>
               <li>
-                <h2><a href="#">Duis a quam sem Vivamus elit felis</a></h2>
-                <p> <a href="#"><img src={waiter} width="162" height="101" alt="" /></a> This website template has been designed by Free website templates for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. </p>
+                <h2><Link to='/'>Duis a quam sem Vivamus elit felis</Link></h2>
+                <p> <Link to='/'><img src={waiter} width="162" height="101" alt="" /></Link> This website template has been designed by Free website templates for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. </p>
               </li>
               <li>
-                <h2><a href="#">Vestibulum at neque nibh condimentum</a></h2>
-                <p> <a href="#"><img src={food} width="162" height="122" alt="" /></a> If you're having problems editing this website template, then don't hesitate to ask for help on the forum. </p>
+                <h2><Link to='/'>Vestibulum at neque nibh condimentum</Link></h2>
+                <p> <Link to='/'><img src={food} width="162" height="122" alt="" /></Link> If you're having problems editing this website template, then don't hesitate to ask for help on the forum. </p>
                 <p> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec nec tellus quis enim pharetra molestie. </p>
               </li>
             </ul>

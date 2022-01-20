@@ -11,18 +11,16 @@ export default function FoodItems() {
         <>
             <ul className='section'>
                 <li className='odd'>
-                    <h2></h2>
                     <ul>
                         {foodLeft.map((item, index) => 
-                            <Item item={item} index={index} />
+                            <Item item={item} key={index} />
                         )}
                     </ul>
                 </li>
                 <li>
-                    <h2></h2>
                     <ul>
                         {foodRight.map((item, index) => 
-                            <Item item={item} index={index} />
+                            <Item item={item} key={index} />
                         )}
                     </ul>
                 </li>

@@ -22,7 +22,7 @@ export default function CartItems() {
                 <span className='cart-msg'>{cartMsg}</span>
                 {items.length > 0 ?
                     items.map((item, index) => {
-                        return <CartItem item={item} index={index} />
+                        return <CartItem item={item} key={index} />
                     })
                 : <li>No items in cart</li>
                 }

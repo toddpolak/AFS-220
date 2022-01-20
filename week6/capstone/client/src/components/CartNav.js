@@ -6,7 +6,7 @@ export default function CartNav() {
     const { items, resetCartMsg } = useContext(Context)
     
     const existingEntries = localStorage.getItem('items')
-    const emptyCart = existingEntries === null || items && items.length === 0
+    const emptyCart = (existingEntries === null) || (items && items.length === 0)
 
     return (
         <>

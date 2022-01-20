@@ -7,8 +7,8 @@ export default function Detail() {
 
     return (
         <div id="body">
-            <div class="content">
-                <div class="body">
+            <div className="content">
+                <div className="body">
                     <Description item={item} />
                 </div>
             </div>
