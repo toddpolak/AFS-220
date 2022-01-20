@@ -21,14 +21,11 @@ async function main() {
 
 main().catch(err=>console.log(err))
 
-// Routes
 app.use('/auth', authRouter)
 app.use('/food', foodRouter)
 app.use('/cart', cartRouter)
-app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) //req.user
-//app.use('/api/cart', cartRouter)
+app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
 
-// Error handler
 app.use((err, req, res, next) => {
     console.log(err)
     return res.send({ errMsg: err.message })
